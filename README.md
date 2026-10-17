@@ -123,16 +123,8 @@ Higher monthly billing amounts correlate with increased churn likelihood, indica
 ## Limitations
 Single Model Used: I only used Logistic Regression for this project, so I haven't tested how other types of machine learning models would perform on this dataset.
 
-Static Snapshot: The model relies on a fixed historical spreadsheet and cannot automatically update itself with live, real-time customer activity.
-
-Missing Details: The dataset doesn't include helpful real-world details, such as customer service call logs or specific reasons why customers complained.
-
 ## Future Improvements
 Try Different Models: Experiment with other machine learning algorithms (like Decision Trees or Random Forests) to see if they yield higher accuracy.
-
-Build a Web App: Create a simple user interface (using a tool like Streamlit) so anyone can type in customer details and get an instant churn prediction on a web page.
-
-Automate Data Cleaning: Write more advanced scripts to handle missing data and feature engineering automatically from raw files.
 
 ## Example Output (output/predictions.csv)
 customerID,actual_churn,predicted_churn,churn_probability
