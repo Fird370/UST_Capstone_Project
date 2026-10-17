@@ -1,0 +1,30 @@
+TASK 5: EXPLORATORY DATA ANALYSIS (EDA) SUMMARY
+==================================================
+
+1. Overall Churn Rate: 26.54%
+   -> Observation: Approximately 26.54% of customers left the service.
+
+2. Churn Rate by Contract Type:
+   - Month-to-month: 42.71%
+   - One year: 11.27%
+   - Two year: 2.83%
+   -> Observation: Month-to-month contracts show the highest churn at 42.71%.
+
+3. Churn Rate by Internet Service:
+   - DSL: 18.96%
+   - Fiber optic: 41.89%
+   - No: 7.40%
+   -> Observation: Customers with Fiber optic internet exhibit the highest churn at 41.89%.
+
+4. Churn Rate by Payment Method:
+   - Bank transfer (automatic): 16.71%
+   - Credit card (automatic): 15.24%
+   - Electronic check: 45.29%
+   - Mailed check: 19.11%
+   -> Observation: Customers using Electronic check show an increased churn rate of 45.29%.
+
+5. Churn Rate by Tech Support Availability:
+   - No: 41.64%
+   - No internet service: 7.40%
+   - Yes: 15.17%
+   -> Observation: Customers without tech support show a higher churn rate of 41.64%.
