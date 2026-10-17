@@ -121,16 +121,18 @@ Fiber optic internet users exhibit higher churn rates compared to DSL users.
 Higher monthly billing amounts correlate with increased churn likelihood, indicating price sensitivity.
 
 ## Limitations
-Logistic Regression assumes a linear relationship between features and churn risk, which may overlook complex non-linear patterns.
+Single Model Used: I only used Logistic Regression for this project, so I haven't tested how other types of machine learning models would perform on this dataset.
 
-The dataset represents a static snapshot and lacks dynamic historical activity logs (such as recent support calls).
+Static Snapshot: The model relies on a fixed historical spreadsheet and cannot automatically update itself with live, real-time customer activity.
+
+Missing Details: The dataset doesn't include helpful real-world details, such as customer service call logs or specific reasons why customers complained.
 
 ## Future Improvements
-Upgrade to tree-based ensemble models like Random Forest or XGBoost.
+Try Different Models: Experiment with other machine learning algorithms (like Decision Trees or Random Forests) to see if they yield higher accuracy.
 
-Implement hyperparameter tuning using GridSearchCV.
+Build a Web App: Create a simple user interface (using a tool like Streamlit) so anyone can type in customer details and get an instant churn prediction on a web page.
 
-Develop an interactive web application using Streamlit for real-time risk scoring.
+Automate Data Cleaning: Write more advanced scripts to handle missing data and feature engineering automatically from raw files.
 
 ## Example Output (output/predictions.csv)
 customerID,actual_churn,predicted_churn,churn_probability
