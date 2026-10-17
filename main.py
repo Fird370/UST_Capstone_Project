@@ -11,10 +11,10 @@ def main():
     
     # Define directories based on your project structure
     data_directory = os.path.join("data", "processed")
-    output_directory = "output"  # Matches your root 'output/' directory
+    output_directory = "outputs"  # Matches your root 'outputs/' directory
     
     try:
-        print("\n[STEP 1/1] Running model training and evaluation...")
+        print("\nRunning model training and evaluation...")
         train_and_evaluate(data_directory, output_directory)
         
         print("\n")
