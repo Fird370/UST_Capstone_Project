@@ -83,4 +83,4 @@ if __name__ == "__main__":
     try:
         run_eda(raw_path, output_directory)
     except FileNotFoundError:
-        print(f"[ERROR] Could not find raw file at '{raw_path}'. Please check your file path.")
+        print(f"Error:Could not find raw file at '{raw_path}'. Please check your file path.")

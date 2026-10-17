@@ -52,6 +52,6 @@ if __name__ == "__main__":
     try:
         cleaned_df = clean_telco_data(raw_path, processed_dir)
         cleaned_df.to_csv(output_path, index=False)
-        print(f"[SUCCESS] Cleaned feature matrix saved safely to: {output_path}")
+        print(f"Cleaned feature matrix saved safely to: {output_path}")
     except FileNotFoundError:
-        print(f"[ERROR] Could not find raw file at '{raw_path}'. Please check your file path.")
+        print(f"Could not find raw file at '{raw_path}'. Please check your file path.")
