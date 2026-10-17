@@ -1,17 +1,19 @@
 import pandas as pd
 import os
 
-def load_and_inspect_data(file_path):
-    df = pd.read_csv(file_path)
+def clean_telco_data(raw_file_path, processed_dir):
+    df = pd.read_csv(raw_file_path)
 
-    print("----Data set type----")
-    print(f"Dataset Shape (Rows, Columns): {df.shape}")
+    #drop customerID to make machine learning easier
+    if 'customerID' in df.columns:
+        customer_ids = df[['customerID']].copy()
+        id_output_path = os.path.join(processed_dir, "customer_ids.csv")
+        customer_ids.to_csv(id_output_path, index=False)
+        print(f"Retained customer IDs saved safely to: {id_output_path}")
 
-    print("----First 5 Rows----")
-    print(df.head())
+        df = df.drop(columns=['customerID'])
+        print("Dropped 'customerID' column.")
 
-    print("----Column Data type----")
-    print(df.info())
 
     #Change NaN value to 0 in TotalCharges column
     if 'TotalCharges' in df.columns:
@@ -19,11 +21,8 @@ def load_and_inspect_data(file_path):
         missing_count = df['TotalCharges'].isna().sum()
         print(f"Found {missing_count} missing values in 'TotalCharges'")
         df['TotalCharges'] = df['TotalCharges'].fillna(0.0)
+        print(f"Handled {missing_count} missing values in 'TotalCharges' by filling with 0.0.")
 
-    #drop customerID to make machine learning easier
-    if 'customerID' in df.columns:
-        df = df.drop(columns=['customerID'])
-        print("Dropped 'customerID' column.")
 
     #change Yes/No to binary 1/0
     binary_cols = ['Partner', 'Dependents', 'PhoneService', 'PaperlessBilling', 'Churn']
@@ -38,18 +37,21 @@ def load_and_inspect_data(file_path):
     print("Applied One-Hot Encoding to categorical columns.")
 
     print(f"Final Cleaned Shape: {df.shape}")
-    print("----Final Cleaned Data First 5 Rows----")
-    print(df.head())
 
     return df
 
 if __name__ == "__main__":
-    raw_path = "data/raw/Telco-Customer-Churn.csv"
+    raw_path = os.path.join("data", "raw", "Telco-Customer-Churn.csv")
     processed_dir = "data/processed"
-    output_path = os.path.join(processed_dir, "cleaned_churn.csv")
     
+    # Ensure processed directory exists
     os.makedirs(processed_dir, exist_ok=True)
     
-    cleaned_df = load_and_inspect_data(raw_path)
-    cleaned_df.to_csv(output_path, index=False)
-    print(f"Cleaned data saved safely to: {output_path}")
+    output_path = os.path.join(processed_dir, "cleaned_churn.csv")
+    
+    try:
+        cleaned_df = clean_telco_data(raw_path, processed_dir)
+        cleaned_df.to_csv(output_path, index=False)
+        print(f"[SUCCESS] Cleaned feature matrix saved safely to: {output_path}")
+    except FileNotFoundError:
+        print(f"[ERROR] Could not find raw file at '{raw_path}'. Please check your file path.")
